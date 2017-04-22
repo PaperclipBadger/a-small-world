@@ -3,16 +3,16 @@
   project : {
 
       //These first two are required
-    name : 'empty',
-    version : '1.0.0',
-    author : 'luxeengine',
+    name : 'a-small-world',
+    version : '0.0 alpha',
+    author : 'Blaine Rogers <blaine.w.rogers@gmail.com>',
 
       //This configures your app.
-      //The package is important, it's used 
+      //The package is important, it's used
       //for save locations, initializing mobile project files etc
     app : {
-      name : 'luxe_empty',
-      package : 'com.luxeengine.empty'
+      name : 'a-small-world',
+      package : 'horse.battle.a-small-world'
     },
 
       //This configures the build process
@@ -30,4 +30,3 @@
   } //project
 
 }
-
