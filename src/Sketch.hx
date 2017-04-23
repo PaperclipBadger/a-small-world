@@ -46,9 +46,10 @@ typedef ActorData {
 }
 */
 
-class Sketch extends Scene {
-    override public function new(_name:String) {
-        super(_name);
+class Sketch {
+    var name:String;
+    public function new(_name:String) {
+        name = _name;
         var promise = Luxe.resources.load_json('assets/$name/scene.json');
         promise.then(config_loaded);
     }
@@ -83,7 +84,11 @@ class Sketch extends Scene {
     }
 
     function assets_loaded(config:SceneData, _) {
-        for (item in config.furniture) add(new Furniture(item));
-        for (item in config.actors) add(new Actor(item));
+        for (item in config.furniture) Luxe.scene.add(new Furniture(item));
+        for (item in config.actors) {
+            var actor = new Actor(item);
+            Luxe.scene.add(actor);
+            actor.say("hello world");
+        }
     }
 }

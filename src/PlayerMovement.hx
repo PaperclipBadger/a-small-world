@@ -15,7 +15,7 @@ class PlayerMovement extends Component {
         actor = cast entity;
         max_left = (actor.size.x / 2);
         max_right = Luxe.screen.w - max_left;
-        move_speed = actor.size.x * 1;
+        move_speed = actor.size.x * 1.5;
     }
 
     override function update(dt:Float) {

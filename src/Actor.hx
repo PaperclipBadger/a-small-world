@@ -18,6 +18,7 @@ typedef ActorOptions = {
 class Actor extends Sprite {
     public var anim:SpriteAnimation;
     public var movement:PlayerMovement;
+    public var speech:Speech;
 
     override public function new(options:ActorOptions) {
         var texture = Luxe.resources.texture(options.texture_id);
@@ -44,6 +45,8 @@ class Actor extends Sprite {
             centered: options.centered,
         });
 
+        speech = add(new Speech({ name: '$name/speech' }));
+
         if (options.animation_id != null) {
             anim = add(new SpriteAnimation({ name: '$name/anim' }));
             var anim_data = Luxe.resources.json(options.animation_id);
@@ -55,5 +58,9 @@ class Actor extends Sprite {
         if (options.is_player) {
             if (options.can_move) movement = add(new PlayerMovement({ name: '$name/movement' }));
         }
+    }
+
+    public function say(string:String) {
+        if (speech != null) speech.say(string);
     }
 }
