@@ -22,11 +22,11 @@ class PlayerMovement extends Component {
         // called every frame. dt is the time delta in seconds since the last frame.
         if (actor == null) return;
 
-        var moving = if (Luxe.input.inputdown('left')) {
+        var moving = if (Luxe.input.inputdown('left') && !Luxe.input.inputdown('right')) {
             actor.pos.x -= move_speed * dt;
             actor.flipx = true;
             true;
-        } else if (Luxe.input.inputdown('right')) {
+        } else if (Luxe.input.inputdown('right') && !Luxe.input.inputdown('left')) {
             actor.pos.x += move_speed * dt;
             actor.flipx = false;
             true;
@@ -43,17 +43,10 @@ class PlayerMovement extends Component {
         }
 
         if (moving) {
-            /*
-            if (anim.animation != 'walk') {
-                anim.animation = 'walk';
-            }
-            */
+            actor.set_walking();
         } else {
-            if (actor.anim.animation != 'idle') {
-                actor.anim.animation = 'idle';
-            }
+            actor.set_idle();
         }
-
     }
 
     override function onreset() {

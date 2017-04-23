@@ -34,7 +34,7 @@ class Main extends luxe.Game {
     override function ready() {
 
         connect_input();
-        new Sketch("studio");
+        Luxe.scene.add(new Sketch("studio"));
 
     } //ready
 
@@ -43,6 +43,12 @@ class Main extends luxe.Game {
         Luxe.input.bind_key('left', Key.key_a);
         Luxe.input.bind_key('right', Key.right);
         Luxe.input.bind_key('right', Key.key_d);
+        Luxe.input.bind_key('up', Key.up);
+        Luxe.input.bind_key('up', Key.key_w);
+        Luxe.input.bind_key('down', Key.down);
+        Luxe.input.bind_key('down', Key.key_s);
+        Luxe.input.bind_key('interact', Key.space);
+        Luxe.input.bind_key('interact', Key.key_e);
     }
 
     override function onkeyup(event:KeyEvent) {

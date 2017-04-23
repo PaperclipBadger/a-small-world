@@ -6,69 +6,50 @@ import luxe.ParcelProgress;
 import luxe.Color;
 import luxe.Vector;
 
-import luxe.Scene;
+import luxe.Entity;
 import luxe.options.SpriteOptions;
 
 import Furniture;
 import Actor;
+import Prop;
 
 typedef SceneData = {
     var furniture:Array<FurnitureOptions>;
     var actors:Array<ActorOptions>;
-    /*
-    var props:Array<PropData>;
-    */
+    var props:Array<PropOptions>;
+    var dialogue:Array<DialogueLine>;
 }
 
-/*
-typedef SpriteData = {
-    var name:String;
-    var image:String;
-    @:optional var anim:String;
-    var x:Float;
-    var y:Float;
-    var depth:Float;
-    @:optional var centered:Bool;
+typedef DialogueLine = {
+    var actor:String;
+    var text:String;
+    var duration:Float;
 }
 
-typedef AnimationData = {
-    var json: String;
-    var _default: String;
-}
+class Sketch extends Entity {
+    var dialogue_iter:Iterator<DialogueLine>;
+    var actors:Map<String, Actor> = new Map();
 
-typedef PropData = {
-    >SpriteData;
-}
-
-typedef ActorData {
-    >SpriteData;
-    var is_player:Bool:
-}
-*/
-
-class Sketch {
-    var name:String;
     public function new(_name:String) {
-        name = _name;
+        super({ name: _name});
         var promise = Luxe.resources.load_json('assets/$name/scene.json');
         promise.then(config_loaded);
     }
 
     function config_loaded(_) {
         var config:SceneData = Luxe.resources.json('assets/$name/scene.json').asset.json;
+        dialogue_iter = config.dialogue.iterator();
 
-        var jsons = new Array<JSONInfo>();
-        var textures = new Array<TextureInfo>();
+        var jsons:Array<JSONInfo> = [];
+        var textures:Array<TextureInfo> = [];
         for (item in config.furniture) {
             textures.push({ id: item.texture_id });
             if (item.animation_id != null) jsons.push({ id: item.animation_id });
         }
-        /*
         for (item in config.props) {
-            textures.push({ id: 'assets/$name/${item.texture}' });
-            if (item.anim != null) jsons.push({ id: 'assets/$name/${item.anim}' });
+            textures.push({ id: item.texture_id });
+            if (item.animation_id != null) jsons.push({ id: item.animation_id });
         }
-        */
         for (item in config.actors) {
             textures.push({ id: item.texture_id });
             if (item.animation_id != null) jsons.push({ id: item.animation_id });
@@ -77,18 +58,26 @@ class Sketch {
         var parcel = new Parcel({jsons: jsons, textures: textures});
         new ParcelProgress({
             parcel: parcel,
-            background: new Color(1, 1, 1, 0.85),
+            background: new Color(0, 0, 0, 0.85),
             oncomplete: assets_loaded.bind(config),
         });
         parcel.load();
     }
 
     function assets_loaded(config:SceneData, _) {
-        for (item in config.furniture) Luxe.scene.add(new Furniture(item));
-        for (item in config.actors) {
-            var actor = new Actor(item);
-            Luxe.scene.add(actor);
-            actor.say("hello world");
+        for (item in config.furniture) (new Furniture(item)).parent = this;
+        for (item in config.actors) (actors[item.name] = new Actor(item)).parent = this;
+        for (item in config.props) (new Prop(item)).parent = this;
+
+        read_dialogue();
+    }
+
+    function read_dialogue() {
+        if (dialogue_iter.hasNext()) {
+            var line = dialogue_iter.next();
+            actors[line.actor].say(line.text, line.duration);
+            Luxe.timer.schedule(line.duration, read_dialogue);
         }
     }
+
 }

@@ -17,8 +17,8 @@ typedef ActorOptions = {
 
 class Actor extends Sprite {
     public var anim:SpriteAnimation;
-    public var movement:PlayerMovement;
     public var speech:Speech;
+    public var has_fish:Bool = false;
 
     override public function new(options:ActorOptions) {
         var texture = Luxe.resources.texture(options.texture_id);
@@ -56,11 +56,30 @@ class Actor extends Sprite {
         }
 
         if (options.is_player) {
-            if (options.can_move) movement = add(new PlayerMovement({ name: '$name/movement' }));
+            if (options.can_move) add(new PlayerMovement({ name: '$name/movement' }));
+            add(new PlayerInteract({ name: '$name/interact' }));
         }
     }
 
-    public function say(string:String) {
-        if (speech != null) speech.say(string);
+    public function say(text:String, duration:Float) {
+        if (speech != null) speech.say(text, duration);
+    }
+
+    public function give_fish() {
+        has_fish = true;
+        switch (anim.animation) {
+            case 'idle': anim.animation = 'fish_idle';
+            case 'walk': anim.animation = 'fish_walk';
+        }
+        remove('$name/interact');
+        add(new PlayerSlap({ name: '$name/slap' }));
+    }
+
+    public function set_walking() {
+        anim.animation = if (has_fish) 'fish_walk'; else 'walk';
+    }
+
+    public function set_idle() {
+        anim.animation = if (has_fish) 'fish_idle'; else 'idle';
     }
 }

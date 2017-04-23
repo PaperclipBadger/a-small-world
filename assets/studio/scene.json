@@ -22,17 +22,75 @@
       "centered": false
     }
   ],
-  "props": [],
+  "props": [
+    {
+      "type": "fish",
+      "name": "fish",
+      "texture_id": "assets/fish.png",
+      "animation_id": "assets/fish_anim.json",
+      "size": { "x": 40, "y": 30 },
+      "position": { "x": 90, "y": 90 },
+      "depth": 0.6,
+      "centered": false
+    }
+  ],
   "actors": [
     {
       "name": "ayoade",
       "texture_id": "assets/studio/ayoade.png",
       "animation_id": "assets/studio/ayoade_anim.json",
-      "size": { "x": 40, "y": 120 },
-      "position": { "x": 40, "y": 90 },
-      "depth": 0.4,
+      "size": { "x": 120, "y": 120 },
+      "position": { "x": 60, "y": 80 },
+      "depth": 0.1,
+      "is_player": false,
+      "can_move": false
+    },
+    {
+      "name": "ayoade0",
+      "texture_id": "assets/studio/ayoade.png",
+      "animation_id": "assets/studio/ayoade_anim.json",
+      "size": { "x": 120, "y": 120 },
+      "position": { "x": 100, "y": 80 },
+      "depth": 0.1,
+      "is_player": false,
+      "can_move": false
+    },
+    {
+      "name": "ayoade1",
+      "texture_id": "assets/studio/ayoade.png",
+      "animation_id": "assets/studio/ayoade_anim.json",
+      "size": { "x": 120, "y": 120 },
+      "position": { "x": 20, "y": 90 },
+      "depth": 0.2,
+      "is_player": false,
+      "can_move": false
+    },
+    {
+      "name": "ayoade2",
+      "texture_id": "assets/studio/ayoade.png",
+      "animation_id": "assets/studio/ayoade_anim.json",
+      "size": { "x": 120, "y": 120 },
+      "position": { "x": 140, "y": 90 },
+      "depth": 0.2,
       "is_player": true,
-      "can_move": true
+      "can_move": false
+    }
+  ],
+  "dialogue": [
+    {
+        "actor": "ayoade",
+        "text": "what a nice day for a walk",
+        "duration": 1.5
+    },
+    {
+        "actor": "ayoade1",
+        "text": "ooh isn't it just though",
+        "duration": 2.3
+    },
+    {
+        "actor": "ayoade",
+        "text": "let's sit here silently for a while",
+        "duration": 3
     }
   ]
 }

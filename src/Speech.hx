@@ -1,18 +1,24 @@
 package;
 
 import luxe.Color;
-import luxe.Component;
-import luxe.Sprite;
-import luxe.Vector;
-import luxe.Visual;
 import luxe.Rectangle;
+import luxe.Visual;
+import luxe.Vector;
+
+import phoenix.BitmapFont;
+
+import luxe.Sprite;
+import luxe.Component;
 import Luxe;
 
+import Utils;
+
 class SpeechBubble extends Sprite {
-    override public function new(_name:String, text:String, depth:Float) {
+    override public function new(_name:String, text:String, position:Vector, depth:Float) {
         super({ name: _name });
 
-        var bounds = new Rectangle(0, 0, 200, 20);
+        var size = Utils.pix2screen(new Vector(40, 30));
+        var bounds = new Rectangle(position.x, position.y, size.x, size.y);
         (new luxe.Visual({
             name: '$name/text',
             depth: depth + 0.01,
@@ -20,6 +26,7 @@ class SpeechBubble extends Sprite {
             geometry: Luxe.draw.text({
                bounds: bounds,
                bounds_wrap: true,
+               align: TextAlign.center,
                text: text,
                point_size: 16
             })
@@ -47,16 +54,20 @@ class Speech extends Component {
         sprite = cast entity;
     }
 
-    public function say(string:String) {
+    public function say(text:String, duration:Float) {
         if (sprite == null) return;
 
-        bubble = new SpeechBubble('$name/bubble', string, sprite.depth);
+        var position = Utils.pix2screen(new Vector(26, -24));
+        bubble = new SpeechBubble('$name/bubble', text, position, sprite.depth);
+        bubble.parent = sprite;
+
+        var timer = Luxe.timer.schedule(duration, function() {
+           bubble.destroy(true);
+        });
     }
 
     override function update(dt:Float) {
         // called every frame. dt is the time delta in seconds since the last frame.
-        var position = new Vector(sprite.pos.x, sprite.pos.y - (sprite.size.y / 2) + 10);
-        bubble.pos = position;
     }
 
     override function onreset() {
