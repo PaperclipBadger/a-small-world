@@ -1,0 +1,38 @@
+{
+  "furniture": [
+    {
+      "name": "backdrop",
+      "texture_id": "assets/studio/backdrop.png",
+      "position": { "x": 0, "y": 0 },
+      "depth": 0.0,
+      "centered": false
+    },
+    {
+      "name": "table",
+      "texture_id": "assets/studio/table.png",
+      "position": { "x": 20, "y": 80 },
+      "depth": 0.5,
+      "centered": false
+    },
+    {
+      "name": "boom_mic",
+      "texture_id": "assets/studio/boom_mic.png",
+      "position": { "x": 70, "y": 0 },
+      "depth": 0.99,
+      "centered": false
+    }
+  ],
+  "props": [],
+  "actors": [
+    {
+      "name": "ayoade",
+      "texture_id": "assets/studio/ayoade.png",
+      "animation_id": "assets/studio/ayoade_anim.json",
+      "size": { "x": 40, "y": 120 },
+      "position": { "x": 40, "y": 90 },
+      "depth": 0.4,
+      "is_player": true,
+      "can_move": true
+    }
+  ]
+}
