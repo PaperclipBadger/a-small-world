@@ -12,13 +12,7 @@ import phoenix.Texture;
 import luxe.components.sprite.SpriteAnimation;
 
 class Main extends luxe.Game {
-    var player:Sprite;
-    var anim:SpriteAnimation;
-    var image:Texture;
-
-    var max_left:Float = 0;
-    var max_right:Float = 0;
-    var move_speed:Float = 0;
+    var scenes:Iterator<String>;
 
     override function config(config:GameConfig) {
 
@@ -32,10 +26,9 @@ class Main extends luxe.Game {
     } //config
 
     override function ready() {
-
         connect_input();
-        Luxe.scene.add(new Sketch("studio"));
-
+        scenes = ["studio", "office"].iterator();
+        var sketch = new Sketch("studio");
     } //ready
 
     function connect_input() {

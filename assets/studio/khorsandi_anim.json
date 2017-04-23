@@ -1,0 +1,26 @@
+{
+    "idle" : {
+        "frame_size": { "x":"120", "y":"120" },
+        "frameset": ["1", "hold 1", "2", "hold 2", "1", "hold 8"],
+        "loop": "true",
+        "speed": "8"
+    },
+    "fish_idle" : {
+        "frame_size": { "x":"120", "y":"120" },
+        "frameset": ["3", "hold 1", "4", "hold 2", "3", "hold 8"],
+        "loop": "true",
+        "speed": "8"
+    },
+    "slap" : {
+        "frame_size": { "x":"120", "y":"120" },
+        "frameset": ["5", "hold 1", "6", "hold 3", "4"],
+        "loop": "true",
+        "speed": "8",
+        "events": [
+          {
+              "frame" : 4,
+              "event" : "player.animation.slap_finished"
+          }
+        ]
+    }
+}

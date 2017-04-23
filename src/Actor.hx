@@ -8,11 +8,13 @@ import phoenix.Texture;
 
 import types.SimpleVector;
 import types.SpriteOptions;
+import Math;
 
 typedef ActorOptions = {
     > SpriteOptions,
     var is_player:Bool;
     var can_move:Bool;
+    var slappable:Bool;
 }
 
 class Actor extends Sprite {
@@ -59,6 +61,8 @@ class Actor extends Sprite {
             if (options.can_move) add(new PlayerMovement({ name: '$name/movement' }));
             add(new PlayerInteract({ name: '$name/interact' }));
         }
+
+        if (options.slappable) add(new Slappable({ name: '$name/slappable' }));
     }
 
     public function say(text:String, duration:Float) {

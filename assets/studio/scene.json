@@ -36,59 +36,63 @@
   ],
   "actors": [
     {
-      "name": "ayoade",
-      "texture_id": "assets/studio/ayoade.png",
-      "animation_id": "assets/studio/ayoade_anim.json",
+      "name": "laurie",
+      "texture_id": "assets/studio/laurie.png",
+      "animation_id": "assets/studio/laurie_anim.json",
       "size": { "x": 120, "y": 120 },
       "position": { "x": 60, "y": 80 },
       "depth": 0.1,
       "is_player": false,
-      "can_move": false
+      "can_move": false,
+      "slappable": false
     },
     {
-      "name": "ayoade0",
-      "texture_id": "assets/studio/ayoade.png",
-      "animation_id": "assets/studio/ayoade_anim.json",
+      "name": "thompson",
+      "texture_id": "assets/studio/thompson.png",
+      "animation_id": "assets/studio/thompson_anim.json",
       "size": { "x": 120, "y": 120 },
       "position": { "x": 100, "y": 80 },
       "depth": 0.1,
       "is_player": false,
-      "can_move": false
+      "can_move": false,
+      "slappable": true
     },
     {
-      "name": "ayoade1",
-      "texture_id": "assets/studio/ayoade.png",
-      "animation_id": "assets/studio/ayoade_anim.json",
+      "name": "khorsandi",
+      "texture_id": "assets/studio/khorsandi.png",
+      "animation_id": "assets/studio/khorsandi_anim.json",
       "size": { "x": 120, "y": 120 },
       "position": { "x": 20, "y": 90 },
       "depth": 0.2,
       "is_player": false,
-      "can_move": false
+      "can_move": false,
+      "slappable": false
     },
     {
-      "name": "ayoade2",
+      "name": "ayoade",
       "texture_id": "assets/studio/ayoade.png",
       "animation_id": "assets/studio/ayoade_anim.json",
       "size": { "x": 120, "y": 120 },
       "position": { "x": 140, "y": 90 },
       "depth": 0.2,
       "is_player": true,
-      "can_move": false
+      "can_move": false,
+      "slappable": false
     }
   ],
   "dialogue": [
     {
-        "actor": "ayoade",
+        "actor": "laurie",
         "text": "what a nice day for a walk",
         "duration": 1.5
     },
     {
-        "actor": "ayoade1",
+        "actor": "thompson",
         "text": "ooh isn't it just though",
         "duration": 2.3
     },
     {
-        "actor": "ayoade",
+        "actor": "laurie",
         "text": "let's sit here silently for a while",
         "duration": 3
     }

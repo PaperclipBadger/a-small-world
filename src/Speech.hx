@@ -14,14 +14,14 @@ import Luxe;
 import Utils;
 
 class SpeechBubble extends Sprite {
-    override public function new(_name:String, text:String, position:Vector, depth:Float) {
+    override public function new(_name:String, text:String, position:Vector) {
         super({ name: _name });
 
-        var size = Utils.pix2screen(new Vector(40, 30));
+        var size = Utils.pix2screen(new Vector(35, 20));
         var bounds = new Rectangle(position.x, position.y, size.x, size.y);
         (new luxe.Visual({
             name: '$name/text',
-            depth: depth + 0.01,
+            depth: 1.01,
             color: new luxe.Color(0, 0, 0, 1),
             geometry: Luxe.draw.text({
                bounds: bounds,
@@ -33,7 +33,7 @@ class SpeechBubble extends Sprite {
         })).parent = this;
         (new luxe.Visual({
             name: '$name/bounds',
-            depth: depth,
+            depth: 1.0,
             color: new luxe.Color(1, 1, 1, 1),
             geometry: Luxe.draw.box({
                 x: bounds.x,
@@ -57,8 +57,8 @@ class Speech extends Component {
     public function say(text:String, duration:Float) {
         if (sprite == null) return;
 
-        var position = Utils.pix2screen(new Vector(26, -24));
-        bubble = new SpeechBubble('$name/bubble', text, position, sprite.depth);
+        var position = Utils.pix2screen(new Vector(46, -5));
+        bubble = new SpeechBubble('$name/bubble', text, position);
         bubble.parent = sprite;
 
         var timer = Luxe.timer.schedule(duration, function() {
