@@ -3,7 +3,7 @@
   project : {
 
       //These first two are required
-    name : 'asmallworld',
+    name : 'a-small-world',
     version : '0.0 alpha',
     author : 'Blaine Rogers <blaine.w.rogers@gmail.com>',
 
@@ -11,7 +11,7 @@
       //The package is important, it's used
       //for save locations, initializing mobile project files etc
     app : {
-      name : 'asmallworld',
+      name : 'a-small-world',
       package : 'horse.battle.asmallworld'
     },
 
