@@ -12,7 +12,7 @@
       //for save locations, initializing mobile project files etc
     app : {
       name : 'a-small-world',
-      package : 'horse.battle.asmallworld'
+      package : 'horse.battle.a-small-world'
     },
 
       //This configures the build process
