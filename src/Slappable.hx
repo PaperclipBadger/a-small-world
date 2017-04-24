@@ -33,6 +33,9 @@ class Slappable extends Component {
     }
 
     function on_recoil_finish(_) {
+        Luxe.timer.schedule(1, function() {
+            Luxe.events.fire('sketch.end');
+        });
         actor.set_idle();
     }
 }

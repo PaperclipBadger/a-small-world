@@ -18,6 +18,7 @@ typedef SceneData = {
     var actors:Array<ActorOptions>;
     var props:Array<PropOptions>;
     var dialogue:Array<DialogueLine>;
+    var target:Float;
 }
 
 typedef DialogueLine = {
@@ -26,18 +27,22 @@ typedef DialogueLine = {
     var duration:Float;
 }
 
+typedef StartEvent = {
+    var target_time:Float;
+}
+
 class Sketch extends Entity {
     var dialogue_iter:Iterator<DialogueLine>;
     var actors:Map<String, Actor> = new Map();
 
     public function new(_name:String) {
         super({ name: _name});
-        var promise = Luxe.resources.load_json('assets/$name/scene.json');
+        var promise = Luxe.resources.load_json('assets/sketch_${name}.json');
         promise.then(config_loaded);
     }
 
     function config_loaded(_) {
-        var config:SceneData = Luxe.resources.json('assets/$name/scene.json').asset.json;
+        var config:SceneData = Luxe.resources.json('assets/sketch_${name}.json').asset.json;
         dialogue_iter = config.dialogue.iterator();
 
         var jsons:Array<JSONInfo> = [];
@@ -69,11 +74,12 @@ class Sketch extends Entity {
         for (item in config.actors) (actors[item.name] = new Actor(item)).parent = this;
         for (item in config.props) (new Prop(item)).parent = this;
 
+        Luxe.events.fire('sketch.start', { target_time: config.target });
         read_dialogue();
     }
 
     function read_dialogue() {
-        if (dialogue_iter.hasNext()) {
+        if (!destroyed && dialogue_iter.hasNext()) {
             var line = dialogue_iter.next();
             actors[line.actor].say(line.text, line.duration);
             Luxe.timer.schedule(line.duration, read_dialogue);

@@ -47,7 +47,6 @@ class SpeechBubble extends Sprite {
 
 class Speech extends Component {
     var sprite:Sprite;
-    var bubble:SpeechBubble;
 
     override function onadded() {
         // called when the component is added to the entity
@@ -58,11 +57,11 @@ class Speech extends Component {
         if (sprite == null) return;
 
         var position = Utils.pix2screen(new Vector(46, -5));
-        bubble = new SpeechBubble('$name/bubble', text, position);
+        var bubble = new SpeechBubble('$name/bubble', text, position);
         bubble.parent = sprite;
 
         var timer = Luxe.timer.schedule(duration, function() {
-           bubble.destroy(true);
+           if (!bubble.destroyed) bubble.destroy();
         });
     }
 

@@ -2,21 +2,21 @@
   "furniture": [
     {
       "name": "backdrop",
-      "texture_id": "assets/studio/backdrop.png",
+      "texture_id": "assets/backdrop.png",
       "position": { "x": 0, "y": 0 },
       "depth": 0.0,
       "centered": false
     },
     {
       "name": "table",
-      "texture_id": "assets/studio/table.png",
+      "texture_id": "assets/table.png",
       "position": { "x": 20, "y": 80 },
       "depth": 0.5,
       "centered": false
     },
     {
       "name": "boom_mic",
-      "texture_id": "assets/studio/boom_mic.png",
+      "texture_id": "assets/boom_mic.png",
       "position": { "x": 70, "y": 0 },
       "depth": 0.99,
       "centered": false
@@ -37,8 +37,8 @@
   "actors": [
     {
       "name": "laurie",
-      "texture_id": "assets/studio/laurie.png",
-      "animation_id": "assets/studio/laurie_anim.json",
+      "texture_id": "assets/laurie.png",
+      "animation_id": "assets/laurie_anim.json",
       "size": { "x": 120, "y": 120 },
       "position": { "x": 60, "y": 80 },
       "depth": 0.1,
@@ -48,8 +48,8 @@
     },
     {
       "name": "thompson",
-      "texture_id": "assets/studio/thompson.png",
-      "animation_id": "assets/studio/thompson_anim.json",
+      "texture_id": "assets/thompson.png",
+      "animation_id": "assets/thompson_anim.json",
       "size": { "x": 120, "y": 120 },
       "position": { "x": 100, "y": 80 },
       "depth": 0.1,
@@ -59,8 +59,8 @@
     },
     {
       "name": "khorsandi",
-      "texture_id": "assets/studio/khorsandi.png",
-      "animation_id": "assets/studio/khorsandi_anim.json",
+      "texture_id": "assets/khorsandi.png",
+      "animation_id": "assets/khorsandi_anim.json",
       "size": { "x": 120, "y": 120 },
       "position": { "x": 20, "y": 90 },
       "depth": 0.2,
@@ -70,8 +70,8 @@
     },
     {
       "name": "ayoade",
-      "texture_id": "assets/studio/ayoade.png",
-      "animation_id": "assets/studio/ayoade_anim.json",
+      "texture_id": "assets/ayoade.png",
+      "animation_id": "assets/ayoade_anim.json",
       "size": { "x": 120, "y": 120 },
       "position": { "x": 140, "y": 90 },
       "depth": 0.2,
@@ -83,18 +83,34 @@
   "dialogue": [
     {
         "actor": "laurie",
-        "text": "what a nice day for a walk",
-        "duration": 1.5
+        "text": "I just can't believe it.",
+        "duration": 0.8
     },
     {
         "actor": "thompson",
-        "text": "ooh isn't it just though",
-        "duration": 2.3
+        "text": "I know! The BBC! Commissioning us!",
+        "duration": 1.2
     },
     {
         "actor": "laurie",
-        "text": "let's sit here silently for a while",
-        "duration": 3
+        "text": "And for a sketch show, no less.",
+        "duration": 1.0
+    },
+    {
+        "actor": "khorsandi",
+        "text": "Called 'A Small World', after our sketch troupe!",
+        "duration": 1.8
+    },
+    {
+        "actor": "laurie",
+        "text": "And all because we discovered the secret to comedy.",
+        "duration": 2.0
+    },
+    {
+        "actor": "ayoade",
+        "text": "Slapping someone with a fish.",
+        "duration": 1.8
     }
-  ]
+  ],
+  "target": 9.0
 }

@@ -1,0 +1,101 @@
+{
+  "furniture": [
+    {
+      "name": "backdrop",
+      "texture_id": "assets/backdrop.png",
+      "position": { "x": 0, "y": 0 },
+      "depth": 0.0,
+      "centered": false
+    },
+    {
+      "name": "table",
+      "texture_id": "assets/table.png",
+      "position": { "x": 20, "y": 80 },
+      "depth": 0.5,
+      "centered": false
+    },
+    {
+      "name": "boom_mic",
+      "texture_id": "assets/boom_mic.png",
+      "position": { "x": 70, "y": 0 },
+      "depth": 0.99,
+      "centered": false
+    }
+  ],
+  "props": [
+    {
+      "type": "fish",
+      "name": "fish",
+      "texture_id": "assets/fish.png",
+      "animation_id": "assets/fish_anim.json",
+      "size": { "x": 40, "y": 30 },
+      "position": { "x": 90, "y": 90 },
+      "depth": 0.6,
+      "centered": false
+    }
+  ],
+  "actors": [
+    {
+      "name": "laurie",
+      "texture_id": "assets/laurie.png",
+      "animation_id": "assets/laurie_anim.json",
+      "size": { "x": 120, "y": 120 },
+      "position": { "x": 60, "y": 80 },
+      "depth": 0.1,
+      "is_player": false,
+      "can_move": false,
+      "slappable": false
+    },
+    {
+      "name": "thompson",
+      "texture_id": "assets/thompson.png",
+      "animation_id": "assets/thompson_anim.json",
+      "size": { "x": 120, "y": 120 },
+      "position": { "x": 100, "y": 80 },
+      "depth": 0.1,
+      "is_player": false,
+      "can_move": false,
+      "slappable": true
+    },
+    {
+      "name": "khorsandi",
+      "texture_id": "assets/khorsandi.png",
+      "animation_id": "assets/khorsandi_anim.json",
+      "size": { "x": 120, "y": 120 },
+      "position": { "x": 20, "y": 90 },
+      "depth": 0.2,
+      "is_player": false,
+      "can_move": false,
+      "slappable": false
+    },
+    {
+      "name": "ayoade",
+      "texture_id": "assets/ayoade.png",
+      "animation_id": "assets/ayoade_anim.json",
+      "size": { "x": 120, "y": 120 },
+      "position": { "x": 140, "y": 90 },
+      "depth": 0.2,
+      "is_player": true,
+      "can_move": false,
+      "slappable": false
+    }
+  ],
+  "dialogue": [
+    {
+        "actor": "laurie",
+        "text": "What a nice day for a walk.",
+        "duration": 1.5
+    },
+    {
+        "actor": "thompson",
+        "text": "Ooh isn't it just though.",
+        "duration": 2.3
+    },
+    {
+        "actor": "laurie",
+        "text": "Let's sit here silently for a while.",
+        "duration": 3
+    }
+  ],
+  "target": 10.1
+}
